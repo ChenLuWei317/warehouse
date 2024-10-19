@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.Hyperlink?>
+<VBox xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx/fxml/1" fx:controller="com.app.controller.LoginController"
+      fx:id="mainVBox1" alignment="CENTER" spacing="20" style="-fx-background-color: rgba(255, 255, 255, 0.9); -fx-background-image: url('/images/OIP.jpg'); -fx-background-size: cover;"
+      stylesheets="@../css/style.css">
+
+   <padding>
+      <!-- 给整个 VBox 增加一些内边距 -->
+      <Insets top="20" right="20" bottom="20" left="20"/>
+   </padding>
+
+   <children>
+      <!-- Title Label -->
+      <Label text="登入" style="-fx-font-size: 20px; -fx-text-fill: gray;"/>
+
+      <!-- HBox for 身份证号 -->
+      <HBox spacing="10" alignment="CENTER_LEFT">
+         <padding>
+            <!-- 给 HBox 增加一些内边距 -->
+            <Insets top="20" right="20" bottom="20" left="350"/>
+         </padding>
+         <Label text="身份证号:" style="-fx-font-size: 20px; -fx-text-fill: gray;"/>
+         <TextField fx:id="Username" promptText="在这里输入账号" prefWidth="250">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </TextField>
+      </HBox>
+
+      <!-- HBox for 密码 -->
+      <HBox spacing="10" alignment="CENTER_LEFT">
+         <padding>
+            <Insets top="20" right="20" bottom="20" left="390"/>
+         </padding>
+         <Label text="密码:" style="-fx-font-size: 20px; -fx-text-fill: gray;"/>
+         <PasswordField fx:id="Password" promptText="在这里输入密码" prefWidth="250">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </PasswordField>
+      </HBox>
+
+      <!-- Button for 登录 -->
+      <Button styleClass="login_button" fx:id="doLogin" onAction="#doLogin">登录</Button>
+      <Button styleClass="login_button" fx:id="toRegister" onAction="#toRegister">注册</Button>
+      <!-- HBox for 超链接 -->
+<!--      <HBox alignment="BOTTOM_LEFT" spacing="10">-->
+<!--         <padding>-->
+<!--            &lt;!&ndash; 给 HBox 增加内边距，使其靠近底部左侧 &ndash;&gt;-->
+<!--            <Insets top="20" right="20" bottom="20" left="10"/>-->
+<!--         </padding>-->
+<!--         <Hyperlink text="还没有账户？" fx:id="registerLink" onAction="#handleRegister"/>-->
+<!--      </HBox>-->
+   </children>
+</VBox>

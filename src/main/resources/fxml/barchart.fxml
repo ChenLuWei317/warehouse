@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.app.controller.BarChartController"
+            prefHeight="400.0" prefWidth="600.0">
+    <top>
+        <HBox fx:id="menu" alignment="CENTER" spacing="570" >
+            <children>
+                <MenuBar HBox.hgrow="NEVER">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="系统">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="主页面" onAction="#goToMain" />
+                                <MenuItem mnemonicParsing="false" text="Quit" onAction="#handleClose"/>
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="图像表">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="水平条形图"  />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+
+                <ImageView onMouseClicked="#handleClose" styleClass="login_close" HBox.hgrow="ALWAYS">
+                    <Image url="@/images/close.png"></Image>
+                </ImageView>
+
+            </children>
+        </HBox>
+    </top>
+    <center>
+        <BarChart fx:id="barChart" prefWidth="600" prefHeight="400">
+            <xAxis>
+                <CategoryAxis />
+            </xAxis>
+            <yAxis>
+                <NumberAxis />
+            </yAxis>
+        </BarChart>
+    </center>
+</BorderPane>

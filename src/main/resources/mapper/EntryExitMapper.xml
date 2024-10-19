@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.EntryExitMapper">
+
+    <resultMap id="BaseResultMap" type="com.app.entity.EntryExit">
+            <id property="单号" column="单号" jdbcType="VARCHAR"/>
+            <id property="物料代码" column="物料代码" jdbcType="INTEGER"/>
+            <result property="类型" column="类型" jdbcType="OTHER"/>
+            <result property="操作人员代码" column="操作人员代码" jdbcType="VARCHAR"/>
+            <result property="日期" column="日期" jdbcType="TIMESTAMP"/>
+            <result property="数量" column="数量" jdbcType="INTEGER"/>
+            <result property="备注" column="备注" jdbcType="VARCHAR"/>
+    </resultMap>
+
+<!--    <sql id="Base_Column_List">-->
+<!--        单号,物料代码,类型,-->
+<!--        操作人员代码,日期,数量,-->
+<!--        备注-->
+<!--    </sql>-->
+</mapper>

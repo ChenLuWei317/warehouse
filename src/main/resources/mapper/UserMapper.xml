@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.app.entity.User">
+            <id property="人员代码" column="人员代码" jdbcType="VARCHAR"/>
+            <result property="密码" column="密码" jdbcType="VARCHAR"/>
+            <result property="姓名" column="姓名" jdbcType="VARCHAR"/>
+            <result property="性别" column="性别" jdbcType="VARCHAR"/>
+            <result property="出生日期" column="出生日期" jdbcType="DATE"/>
+            <result property="身份证号" column="身份证号" jdbcType="VARCHAR"/>
+            <result property="籍贯" column="籍贯" jdbcType="VARCHAR"/>
+            <result property="家庭地址" column="家庭地址" jdbcType="VARCHAR"/>
+            <result property="联系电话" column="联系电话" jdbcType="VARCHAR"/>
+            <result property="备注" column="备注" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        人员代码,密码,姓名,
+        性别,出生日期,身份证号,
+        籍贯,家庭地址,联系电话,
+        备注
+    </sql>
+</mapper>

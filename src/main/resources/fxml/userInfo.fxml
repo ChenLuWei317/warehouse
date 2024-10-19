@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="contentArea" prefHeight="530.0" prefWidth="883.0" spacing="10" styleClass="main_border_pane" stylesheets="@../css/Main.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.controller.UserInfoController">
+            <HBox>
+                    <TextField fx:id="searchField" promptText="搜索。。。。" />
+                    <Button fx:id="searchButton" onAction="#search">搜索</Button>
+            </HBox>
+            <TableView fx:id="tableView" editable="true" maxHeight="465.0" minHeight="200" prefHeight="444.0" prefWidth="883.0">
+                <columns>
+                    <TableColumn fx:id="userIdColumn" prefWidth="81.00000250339508" text="人员代码" />
+                    <TableColumn fx:id="userNameColumn" prefWidth="78.99999237060547" text="用户名" />
+                    <TableColumn fx:id="passwordColumn" text="密码" />
+                    <TableColumn fx:id="userSexColumn" text="性别" />
+                    <TableColumn fx:id="userBirthPlaceColumn" text="籍贯" />
+                    <TableColumn fx:id="userAddressColumn" text="家庭住址" />
+                    <TableColumn fx:id="userTelColumn" text="联系电话" />
+                    <TableColumn fx:id="actionsColumn" text="操作">
+                        <cellFactory>
+
+                        </cellFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+            <Pagination fx:id="pagination" />
+            <Label fx:id="contentLabel" text="欢迎使用多级导航栏示例" />
+</VBox>

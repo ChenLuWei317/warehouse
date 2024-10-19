@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.controller.MainController">
+    <left>
+        <TreeView fx:id="navTree" prefHeight="545.0" prefWidth="269.0">
+            <root>
+                <TreeItem value="功能">
+                    <children>
+                        <TreeItem value="用户管理">
+                            <children>
+                                <TreeItem value="添加用户" />
+                                <TreeItem value="修改用户" />
+                                <TreeItem value="人员信息" />
+                            </children>
+                        </TreeItem>
+                        <TreeItem value="进出仓管理">
+                            <children>
+                                <TreeItem value="物品入库" />
+                                <TreeItem value="物品出库" />
+                                <TreeItem value="出库请求" />
+                                <TreeItem value="入库请求" />
+                                <TreeItem value="出入库记录" />
+                            </children>
+                        </TreeItem>
+                        <TreeItem value="物料档案管理">
+                            <children>
+                                <TreeItem value="物品信息" />
+                                <TreeItem value="查询" />
+                            </children>
+                        </TreeItem>
+                        <TreeItem value="打印">
+                            <children>
+                                <TreeItem value="进出仓流量" />
+                                <TreeItem value="物料统计" />
+                                <TreeItem value="进出仓打印" />
+                                <TreeItem value="账本" />
+                            </children>
+                        </TreeItem>
+                    </children>
+                </TreeItem>
+            </root>
+        </TreeView>
+    </left>
+    <center>
+        <VBox fx:id="contentArea" prefHeight="584.0" prefWidth="685.0" spacing="10">
+            <padding>
+                <!-- 给整个 VBox 增加一些内边距 -->
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+            <Label fx:id="contentLabel" text="欢迎使用多级导航栏示例" />
+        </VBox>
+    </center>
+</BorderPane>

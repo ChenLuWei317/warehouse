@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.CountMapper">
+
+    <resultMap id="BaseResultMap" type="com.app.entity.Count">
+            <id property="日期" column="日期" jdbcType="DATE"/>
+            <result property="进仓计数" column="进仓计数" jdbcType="INTEGER"/>
+            <result property="出仓计数" column="出仓计数" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        日期,进仓计数,出仓计数
+    </sql>
+</mapper>

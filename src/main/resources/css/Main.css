@@ -1,0 +1,134 @@
+.root {
+    /*-fx-background-color: #f0f0f0;*/
+}
+
+/*.login_border_pane{*/
+/*    -fx-background-image: url('../images/wukong02.jpg');*/
+/*    -fx-background-size: 799px,450px;*/
+/*}*/
+
+.login_close {
+    -fx-cursor: hand; /* 显示手型光标，表明图片是可点击的 */
+    -fx-opacity: 1; /* 默认不透明 */
+    -fx-transition: opacity 0.2s ease-in-out; /* 过渡效果 */
+}
+
+.login_close:hover {
+    -fx-opacity: 0.8; /* 鼠标悬停时稍微变透明 */
+}
+
+.login_close:pressed {
+    -fx-opacity: 0.6; /* 按钮点击时更透明 */
+}
+
+.login_welcome{
+    -fx-font-family: "宋体"; /* 字体 */
+    -fx-font-size: 40px; /* 字体大小 */
+    -fx-text-fill: rgba(246, 246, 246, 0.99); /* 字体颜色 */
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, black, 10, 0.5, 2, 2);
+    -fx-text-shadow: 2 2 5 rgba(0, 0, 0, 0.5); /* 影子效果 */
+}
+
+.login_name_pwd{
+    -fx-font-family: "宋体"; /* 字体 */
+    -fx-font-size: 30px; /* 字体大小 */
+    -fx-text-fill: rgba(246, 246, 246, 0.99); /* 字体颜色 */
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, black, 10, 0.5, 2, 2);
+    -fx-text-shadow: 2 2 5 rgba(0, 0, 0, 0.5); /* 影子效果 */
+}
+
+.login_text_field {
+    -fx-background-color: #eceff1; /* 背景色 */
+    -fx-border-color: darkblue;      /* 边框颜色 */
+    -fx-border-width: 0;             /* 边框宽度 */
+    -fx-border-radius: 5;            /* 边框圆角 */
+    -fx-padding: 10;                 /* 内边距 */
+    -fx-font-size: 16px;             /* 字体大小 */
+    -fx-text-fill: #000000;         /* 文字颜色 */
+}
+
+.login_button {
+    -fx-background-color: #3258c5; /* 默认背景色 */
+    -fx-text-fill: white;          /* 默认文字颜色 */
+    -fx-font-size: 20px;           /* 字体大小 */
+    -fx-padding: 10 20;            /* 内边距 */
+    -fx-border-radius: 5;          /* 边框圆角 */
+    -fx-background-radius: 5;      /* 背景圆角 */
+    -fx-effect: dropshadow(gaussian, #3258c5, 5, 0.5, 0, 0); /* 默认阴影效果 */
+    -fx-border-color: #3258c5;     /* 边框颜色 */
+    -fx-border-width: 2;           /* 边框宽度 */
+    -fx-border-radius: 5;          /* 边框圆角 */
+    -fx-background-insets: 0, 1;   /* 背景内边距 */
+    -fx-pref-width: 100;           /* 设置按钮宽度为 100 像素 */
+    -fx-cursor: hand;
+}
+
+.login_button:hover {
+    -fx-background-color: #3258c5; /* 鼠标悬浮时背景色 */
+    -fx-effect: dropshadow(gaussian, #3258c5, 7, 0.5, 0, 0); /* 鼠标悬浮时阴影效果 */
+
+}
+
+.login_button:pressed {
+    -fx-background-color: #3258c5; /* 按钮按下时背景色 */
+    -fx-effect: dropshadow(gaussian, #3258c5, 10, 0.5, 0, 0); /* 按钮按下时阴影效果 */
+    -fx-background-insets: 0, 2;   /* 按钮按下时背景内边距 */
+}
+
+.main_border_pane{
+    -fx-background-image: url('../images/wukong02.jpg');
+    -fx-background-size: 799px,450px;
+}
+
+/* Pagination 控件的整体样式 */
+.pagination {
+    -fx-background-color: rgba(240, 240, 240, 0);
+    -fx-border-color: #ccc;
+    -fx-border-width: 0px;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+/* 页码按钮的样式 */
+.pagination .page-button {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-padding: 5px 10px;
+    -fx-text-fill: #333333;
+}
+
+/* 页码按钮悬停样式 */
+.pagination .page-button:hover {
+    -fx-background-color: #d74646;
+}
+
+/* 当前页码按钮的样式 */
+.pagination .page-button:focused {
+    -fx-background-color: #e00404;
+    -fx-text-fill: white;
+}
+
+/* 上一页和下一页按钮的样式 */
+.pagination .page-arrow {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-padding: 5px 10px;
+    -fx-text-fill: #333333;
+}
+
+/* 上一页和下一页按钮悬停样式 */
+.pagination .page-arrow:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+/* 上一页和下一页按钮按下样式 */
+.pagination .page-arrow:pressed {
+    -fx-background-color: #d0d0d0;
+}
+

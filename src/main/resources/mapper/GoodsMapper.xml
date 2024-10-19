@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.GoodsMapper">
+
+    <resultMap id="BaseResultMap" type="com.app.entity.Goods">
+            <id property="物料代码" column="物料代码" jdbcType="INTEGER"/>
+            <result property="物料名称" column="物料名称" jdbcType="VARCHAR"/>
+            <result property="规格型号" column="规格型号" jdbcType="VARCHAR"/>
+            <result property="计量单位" column="计量单位" jdbcType="VARCHAR"/>
+            <result property="库存数量" column="库存数量" jdbcType="INTEGER"/>
+            <result property="备注" column="备注" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        物料代码,物料名称,规格型号,
+        计量单位,库存数量,备注
+    </sql>
+</mapper>

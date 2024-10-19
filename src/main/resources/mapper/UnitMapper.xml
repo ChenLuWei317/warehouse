@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.UnitMapper">
+
+    <resultMap id="BaseResultMap" type="com.app.entity.Unit">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="单位" column="单位" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,单位
+    </sql>
+</mapper>
