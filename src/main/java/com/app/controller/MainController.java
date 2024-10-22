@@ -38,6 +38,9 @@ public class MainController {
 
                 // 根据选中的项展示不同内容
                 switch (selectedItem) {
+                    case "我的":
+                        loaduserProfile();
+                        break;
                     case "添加用户":
 
                         break;
@@ -100,6 +103,22 @@ public class MainController {
             VBox userInfoPane = loader.load();
             // 获取userInfo.fxml的控制器
             UserInfoController userInfoController = loader.getController();
+            // 将userInfo.fxml的根节点添加到contentArea中
+            contentArea.getChildren().clear(); // 清空现有内容
+            contentArea.getChildren().add(userInfoPane); // 添加新页面
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void loaduserProfile() {
+        try {
+            // 使用FXMLLoader加载userInfo.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userProfile.fxml"));
+            loader.setControllerFactory(ApplicationContextProvider.getApplicationContext()::getBean);
+            // 加载根节点
+            VBox userInfoPane = loader.load();
+            // 获取userInfo.fxml的控制器
+            UserProfileController userProfileController = loader.getController();
             // 将userInfo.fxml的根节点添加到contentArea中
             contentArea.getChildren().clear(); // 清空现有内容
             contentArea.getChildren().add(userInfoPane); // 添加新页面

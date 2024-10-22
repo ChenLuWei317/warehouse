@@ -157,10 +157,10 @@ public class UserInfoController {
                         });
 
                         deleteButton.setOnAction(e -> {
-                            User delUser = getTableView().getItems().get(getIndex());
-                            data.remove(delUser);
-                            userService.removeById(delUser.get人员代码());
-                        });
+                        User delUser = getTableView().getItems().get(getIndex());
+                        data.remove(delUser);
+                        userService.removeById(delUser.get人员代码());
+                    });
 
                         actionButtons.setSpacing(10);
                     }

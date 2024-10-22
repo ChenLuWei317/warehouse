@@ -1,5 +1,6 @@
 package com.app.controller;
 
+import com.app.entity.LoginUser;
 import com.app.entity.User;
 import com.app.provider.SceneProvider;
 import com.app.service.UserService;
@@ -85,7 +86,9 @@ public class LoginController extends BaseController{
             if(users == null || users.size() == 0 || users.size() > 1){
                 AlertUtils.error("账号密码错误","用户不存在，请重新输入！");
             } else if (users.size() == 1) {
+                LoginUser.getInstance().setCurrentUser(users.get(0));
                 SceneProvider.switchScene(doLogin, "/fxml/main.fxml");
+
             }
         }
     }
