@@ -10,13 +10,7 @@ import java.util.List;
 /**
 * @author ASUS
 * @description 针对表【软工2202_09_05_29权限管理】的数据库操作Service
-* @createDate 2024-10-17 19:41:27
+* @createDate 2024-10-23 22:21:12
 */
-public interface AuthorityService extends IService<Authority> {
-
-    IPage<AuthorityManage> page(int current, int size, String keyword);
-    void grantAuthority(String userCode, Integer authorityId);
-    void revokeAuthority(String userCode, Integer authorityId);
-
-    List<Authority> listAllAuthorities();
+public interface AuthorityManageService extends IService<AuthorityManage> {
 }

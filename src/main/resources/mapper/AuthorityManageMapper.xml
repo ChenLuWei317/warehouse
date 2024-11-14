@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.AuthorityManageMapper">
+
+    <resultMap id="BaseResultMap" type="com.app.entity.AuthorityManage">
+            <id property="权限代码" column="权限代码" jdbcType="INTEGER"/>
+            <result property="人员代码" column="人员代码" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        权限代码,人员代码
+    </sql>
+</mapper>

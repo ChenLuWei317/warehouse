@@ -10,8 +10,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Font?>
 <?import javafx.collections.FXCollections?>
-<VBox xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx/fxml/1" fx:controller="com.app.warehouse.controller.RegisterController"
-      fx:id="mainVbox" alignment="CENTER" spacing="20" style="-fx-background-color: rgba(255, 255, 255, 0.9); -fx-background-image: url('/css/OIP.jpg'); -fx-background-size: cover;"
+<VBox xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx/fxml/1" fx:controller="com.app.controller.RegisterController"
+      fx:id="mainVbox" alignment="CENTER" spacing="20" style="-fx-background-color: rgba(255, 255, 255, 0.9); -fx-background-image: url('/images/OIP.jpg'); -fx-background-size: cover;"
       stylesheets="@../css/style.css">
 
     <padding>

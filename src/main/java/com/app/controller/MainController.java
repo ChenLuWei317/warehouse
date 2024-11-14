@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -42,13 +43,16 @@ public class MainController {
                         loaduserProfile();
                         break;
                     case "添加用户":
-
+                        loadAddUser();
                         break;
                     case "修改用户":
 
                         break;
                     case "人员信息":
                         loadUserInfoPage();
+                        break;
+                    case "权限管理":
+                        loadUserAuthorityPage();
                         break;
                     case "物品入库":
 
@@ -110,6 +114,22 @@ public class MainController {
             e.printStackTrace();
         }
     }
+    private void loadAddUser() {
+        try {
+            // 使用FXMLLoader加载userInfo.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addUser.fxml"));
+            loader.setControllerFactory(ApplicationContextProvider.getApplicationContext()::getBean);
+            // 加载根节点
+            BorderPane AddUserPane = loader.load();
+            // 获取userInfo.fxml的控制器
+            AddUserController addUserController = loader.getController();
+            // 将userInfo.fxml的根节点添加到contentArea中
+            contentArea.getChildren().clear(); // 清空现有内容
+            contentArea.getChildren().add(AddUserPane); // 添加新页面
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     private void loaduserProfile() {
         try {
             // 使用FXMLLoader加载userInfo.fxml
@@ -122,6 +142,22 @@ public class MainController {
             // 将userInfo.fxml的根节点添加到contentArea中
             contentArea.getChildren().clear(); // 清空现有内容
             contentArea.getChildren().add(userInfoPane); // 添加新页面
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void loadUserAuthorityPage() {
+        try {
+            // 使用FXMLLoader加载userInfo.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userAuthorities.fxml"));
+            loader.setControllerFactory(ApplicationContextProvider.getApplicationContext()::getBean);
+            // 加载根节点
+            VBox Authorities = loader.load();
+            // 获取userInfo.fxml的控制器
+            UserAuthorityController userAuthorityController = loader.getController();
+            // 将userInfo.fxml的根节点添加到contentArea中
+            contentArea.getChildren().clear(); // 清空现有内容
+            contentArea.getChildren().add(Authorities); // 添加新页面
         } catch (IOException e) {
             e.printStackTrace();
         }
