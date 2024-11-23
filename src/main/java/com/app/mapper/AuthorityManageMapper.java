@@ -18,8 +18,11 @@ import java.util.List;
 */
 @Mapper
 public interface AuthorityManageMapper extends BaseMapper<AuthorityManage> {
-    @Select("SELECT * FROM 软工2202_09_05_29权限管理 WHERE 人员代码 = #{personnelCode}")
-    List<Authority> findAuthoritiesByUserCode(@Param("personnelCode") String personnelCode);
+    @Select("SELECT a.* " +
+            "FROM 软工2202_09_05_29权限管理 am " +
+            "INNER JOIN 软工2202_09_05_29权限表 a ON am.权限代码 = a.权限代码 " +
+            "WHERE am.人员代码 = #{userId}")
+    List<Authority> getAuthorityByUserId(String userId);
 
 }
 

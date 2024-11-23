@@ -72,11 +72,5 @@ public class AuthorityManage implements Serializable {
         this.权限代码 = 权限代码;
         this.人员代码 = 人员代码;
     }
-    public AuthorityManage(String 人员代码) {
-        this.人员代码 = 人员代码;
-    }
 
-    public AuthorityManage(Integer 权限代码) {
-        this.权限代码 = 权限代码;
-    }
 }

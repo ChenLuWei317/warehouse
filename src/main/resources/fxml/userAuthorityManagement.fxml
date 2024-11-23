@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.app.controller.AuthorityManagementController">
+    <!-- 顶部搜索栏 -->
+    <top>
+        <HBox spacing="10" >
+            <Label text="搜索用户：" />
+            <TextField fx:id="searchField" promptText="输入用户名或ID" />
+            <Button text="搜索" onAction="#handleSearch" />
+        </HBox>
+    </top>
+
+    <!-- 中间主体部分，使用VBox分割用户列表和权限展示区 -->
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+            </padding>
+            <!-- 用户列表 -->
+            <VBox spacing="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10" />
+                </padding>
+                <Label text="用户列表" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                <TableView fx:id="userTableView" prefWidth="400" prefHeight="400">
+                    <columns>
+                        <TableColumn fx:id="userIdColumn" text="人员代码" prefWidth="100" />
+                        <TableColumn fx:id="userNameColumn" text="姓名" prefWidth="100" />
+                        <TableColumn fx:id="userGenderColumn" text="性别" prefWidth="100" />
+                        <TableColumn fx:id="userAuthoritiesColumn" text="拥有权限" prefWidth="100" />
+                    </columns>
+                </TableView>
+                <Pagination fx:id="userPagination" pageCount="1" />
+            </VBox>
+
+            <!-- 用户权限 -->
+            <VBox spacing="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10" />
+                </padding>
+                <Label text="用户权限" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                <ListView fx:id="authorityListView" prefHeight="350" />
+                <Button text="编辑权限" onAction="#handleEditAuthorities" />
+            </VBox>
+        </VBox>
+    </center>
+
+    <!-- 底部状态栏 -->
+    <bottom>
+        <HBox alignment="CENTER_LEFT">
+            <Label fx:id="statusLabel" text="请选择一个用户查看或编辑其权限。" />
+        </HBox>
+    </bottom>
+</BorderPane>

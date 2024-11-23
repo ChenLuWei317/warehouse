@@ -13,10 +13,5 @@ import java.util.List;
 * @createDate 2024-10-17 19:41:27
 */
 public interface AuthorityService extends IService<Authority> {
-
-    IPage<AuthorityManage> page(int current, int size, String keyword);
-    void grantAuthority(String userCode, Integer authorityId);
-    void revokeAuthority(String userCode, Integer authorityId);
-
-    List<Authority> listAllAuthorities();
+    List<Authority> getPermissionsByUserId(String userId);
 }

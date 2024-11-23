@@ -1,8 +1,6 @@
 package com.app.service;
 
-import com.app.entity.Authority;
 import com.app.entity.AuthorityManage;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
@@ -13,4 +11,5 @@ import java.util.List;
 * @createDate 2024-10-23 22:21:12
 */
 public interface AuthorityManageService extends IService<AuthorityManage> {
+    void updateAuthorityManage(String userId, List<Integer> permissionIds);
 }

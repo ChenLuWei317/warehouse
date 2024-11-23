@@ -45,9 +45,6 @@ public class MainController {
                     case "添加用户":
                         loadAddUser();
                         break;
-                    case "修改用户":
-
-                        break;
                     case "人员信息":
                         loadUserInfoPage();
                         break;
@@ -149,12 +146,12 @@ public class MainController {
     private void loadUserAuthorityPage() {
         try {
             // 使用FXMLLoader加载userInfo.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userAuthorities.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userAuthorityManagement.fxml"));
             loader.setControllerFactory(ApplicationContextProvider.getApplicationContext()::getBean);
             // 加载根节点
-            VBox Authorities = loader.load();
+            BorderPane Authorities = loader.load();
             // 获取userInfo.fxml的控制器
-            UserAuthorityController userAuthorityController = loader.getController();
+            AuthorityManagementController authorityManagementController = loader.getController();
             // 将userInfo.fxml的根节点添加到contentArea中
             contentArea.getChildren().clear(); // 清空现有内容
             contentArea.getChildren().add(Authorities); // 添加新页面
