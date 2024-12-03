@@ -7,6 +7,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -47,7 +50,10 @@ public class UserProfileController {
 
     @FXML
     public void initialize() {
-        currentUser = LoginUser.getInstance().getCurrentUser();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+
+        currentUser = loginUser.getCurrentUser();
         userIdLabel.setText(currentUser.get人员代码());
         userNameField.setText(currentUser.get姓名());
         userSexField.setText(currentUser.get性别());

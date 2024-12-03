@@ -1,40 +1,32 @@
 package com.app.config;
 
-import com.app.service.WMUserDetailsService;
+import com.app.service.impl.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final WMUserDetailsService userDetailsService;
 
-    public SecurityConfig(WMUserDetailsService userDetailsService) {
+    private final UserDetailsServiceImpl userDetailsService;
+
+    public SecurityConfig(UserDetailsServiceImpl userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeHttpRequests()  // 修正为 `authorizeHttpRequests`
-                //.requestMatchers("/public/**").permitAll()  // 匹配公共URL
-                .anyRequest().authenticated()  // 其他请求需要认证
-                .and()
-                .formLogin()  // 启用表单登录
-                .and()
-                .logout();  // 启用登出功能
-
-        return http.build();
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -42,7 +34,46 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
+    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+        return http.getSharedObject(AuthenticationManagerBuilder.class)
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder())
+                .and()
+                .build();
+    }
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+        /*
+          配置信息
+         */
+        http
+                .authorizeRequests()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll()
+                .and()
+                .csrf().disable(); // 如果使用 JavaFX 前后端分离，可以禁用 CSRF
+        /*
+          添加跨域配置，新版本中我们不需要再通过继承WebMvcConfigurer的方式来配置跨域，在的lambda中配置即可
+         */
+        http.cors(cors -> {
+            UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+            CorsConfiguration config = new CorsConfiguration();
+            config.setAllowCredentials(true);
+            config.addAllowedOriginPattern("*");
+            config.addAllowedHeader("*");
+            config.addAllowedMethod("PUT,GET,POST,DELETE");
+            source.registerCorsConfiguration("/**", config);
+            cors.configurationSource(source);
+        });
+
+        return http.build();
     }
 }

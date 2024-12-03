@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @TableName("软工2202_09_05_29人员表")
-public class User implements Serializable, UserDetails {
+public class User implements Serializable {
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
@@ -246,51 +246,6 @@ public class User implements Serializable, UserDetails {
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
-    }
-
-    // UserDetails 方法实现
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        if (authorities == null) {
-            return Collections.emptyList();
-        }
-        return authorities.stream()
-                .map(authority -> (GrantedAuthority) () -> authority.get权限名称())
-                .collect(Collectors.toList()); // 使用 Collectors.toList()
-    }
-
-    @Override
-    public String getPassword() {
-        return this.密码;
-    }
-
-    @Override
-    public String getUsername() {
-        return this.人员代码;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
-
-    public void setAuthorities(List<Authority> authorities) {
-        this.authorities = authorities;
     }
 
 }

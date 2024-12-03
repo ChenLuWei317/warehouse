@@ -2,18 +2,22 @@ package com.app.controller;
 
 
 import com.app.provider.ApplicationContextProvider;
-import com.app.provider.SceneProvider;
+import com.app.entity.LoginUser;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 @Controller
@@ -25,6 +29,18 @@ public class MainController {
     @FXML
     private Label contentLabel;  // 显示当前选择的内容
 
+
+    //private LoginUser loginUser = LoginUser.getInstance();
+    @Autowired
+    private LoginUser loginUser; // 使用@Autowired注入LoginUser
+    private static final Map<String, String> PAGE_PERMISSIONS = new HashMap<String, String>() {{
+        put("人员信息", "用户管理");
+        put("权限管理", "用户管理");
+        put("我的", "用户管理");
+        put("添加用户", "用户管理");
+    }};
+
+
     @FXML
     public void initialize() {
         // 处理导航栏点击事件
@@ -35,64 +51,66 @@ public class MainController {
                 String selectedItem = newValue.getValue();
                 // 更新当前选择的内容 Label
                 contentLabel.setText("当前显示: " + selectedItem);
-                contentArea.getChildren().add(contentLabel); // 将内容标签添加到内容区域
 
-                // 根据选中的项展示不同内容
-                switch (selectedItem) {
-                    case "我的":
-                        loaduserProfile();
-                        break;
-                    case "添加用户":
-                        loadAddUser();
-                        break;
-                    case "人员信息":
-                        loadUserInfoPage();
-                        break;
-                    case "权限管理":
-                        loadUserAuthorityPage();
-                        break;
-                    case "物品入库":
-
-                        break;
-                    case "物品出库":
-
-                        break;
-                    case "出库请求":
-
-                        break;
-                    case "入库请求":
-
-                        break;
-                    case "出入库记录":
-
-                        break;
-                    case "物品信息":
-
-                        break;
-                    case "查询":
-
-                        break;
-                    case "进出仓流量":
-
-                        break;
-                    case "物料统计":
-
-                        break;
-                    case "进出仓打印":
-
-                        break;
-                    case "账本":
-
-                        break;
-                    default:
-                        // 处理未知的选项，保持 contentArea 清空状态
-                        break;
-                }
+                // 权限校验并加载页面
+                handlePageNavigation(selectedItem);
             }
         });
 
         // 默认选择根节点
         navTree.getSelectionModel().select(navTree.getRoot());
+    }
+
+    private void handlePageNavigation(String selectedItem) {
+        // 检查权限
+        String requiredPermission = PAGE_PERMISSIONS.getOrDefault(selectedItem, "");
+        if (!requiredPermission.isEmpty() && !hasPermission(requiredPermission)) {
+            showAccessDenied();
+            return;
+        }
+
+        // 加载页面
+        switch (selectedItem) {
+            case "人员信息":
+                loadUserInfoPage();
+                break;
+            case "权限管理":
+                loadUserAuthorityPage();
+                break;
+            case "我的":
+                loadUserProfile();
+                break;
+            case "添加用户":
+                loadAddUserPage();
+                break;
+            default:
+                contentArea.getChildren().clear();
+                break;
+        }
+    }
+
+
+
+    private boolean hasPermission(String requiredPermission) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !(authentication.getPrincipal() instanceof LoginUser)) {
+            return false;
+        }
+        LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+        return loginUser.getAuthorities().stream()
+                .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals(requiredPermission));
+    }
+
+
+    private void showAccessDenied() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/accessDenied.fxml"));
+            VBox accessDeniedPane = loader.load();
+            contentArea.getChildren().clear();
+            contentArea.getChildren().add(accessDeniedPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void loadUserInfoPage() {
@@ -111,7 +129,7 @@ public class MainController {
             e.printStackTrace();
         }
     }
-    private void loadAddUser() {
+    private void loadAddUserPage() {
         try {
             // 使用FXMLLoader加载userInfo.fxml
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addUser.fxml"));
@@ -127,7 +145,7 @@ public class MainController {
             e.printStackTrace();
         }
     }
-    private void loaduserProfile() {
+    private void loadUserProfile() {
         try {
             // 使用FXMLLoader加载userInfo.fxml
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userProfile.fxml"));
@@ -159,6 +177,5 @@ public class MainController {
             e.printStackTrace();
         }
     }
-//
-//
+
 }

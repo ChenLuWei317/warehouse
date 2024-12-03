@@ -40,7 +40,6 @@
                         <TableColumn fx:id="userIdColumn" text="人员代码" prefWidth="100" />
                         <TableColumn fx:id="userNameColumn" text="姓名" prefWidth="100" />
                         <TableColumn fx:id="userGenderColumn" text="性别" prefWidth="100" />
-                        <TableColumn fx:id="userAuthoritiesColumn" text="拥有权限" prefWidth="100" />
                     </columns>
                 </TableView>
                 <Pagination fx:id="userPagination" pageCount="1" />
