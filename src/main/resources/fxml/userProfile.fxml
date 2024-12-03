@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.controller.UserProfileController">
+    <Label prefHeight="35.0" prefWidth="107.0" styleClass="title" text="用户信息" />
+    <HBox spacing="10.0">
+        <Label prefHeight="40.0" prefWidth="180.0" text="人员代码:" />
+        <Label fx:id="userIdLabel" prefHeight="40.0" prefWidth="420.0" />
+    </HBox>
+    <HBox spacing="10.0">
+        <Label prefHeight="30.0" prefWidth="180.0" text="姓名:" />
+        <TextField fx:id="userNameField" prefHeight="30.0" prefWidth="420.0" />
+    </HBox>
+    <HBox spacing="10.0">
+        <Label prefHeight="30.0" prefWidth="180.0" text="性别:" />
+        <TextField fx:id="userSexField" prefHeight="30.0" prefWidth="420.0" />
+    </HBox>
+    <HBox spacing="10.0">
+        <Label prefHeight="30.0" prefWidth="180.0" text="出生日期:" />
+        <TextField fx:id="birthDateField" prefHeight="30.0" prefWidth="420.0" />
+    </HBox>
+    <HBox spacing="10.0">
+        <Label prefHeight="30.0" prefWidth="180.0" text="身份证号:" />
+        <TextField fx:id="idNumberField" prefHeight="30.0" prefWidth="420.0" />
+    </HBox>
+    <HBox spacing="10.0">
+        <Label prefHeight="30.0" prefWidth="180.0" text="籍贯:" />
+        <TextField fx:id="birthPlaceField" prefHeight="30.0" prefWidth="420.0" />
+    </HBox>
+    <HBox spacing="10.0">
+        <Label prefHeight="30.0" prefWidth="180.0" text="家庭地址:" />
+        <TextField fx:id="addressField" prefHeight="30.0" prefWidth="420.0" />
+    </HBox>
+    <HBox spacing="10.0">
+        <Label prefHeight="30.0" prefWidth="180.0" text="联系电话:" />
+        <TextField fx:id="userTelField" prefHeight="30.0" prefWidth="420.0" />
+    </HBox>
+    <HBox spacing="10.0">
+        <Label prefHeight="30.0" prefWidth="180.0" text="备注:" />
+        <TextField fx:id="remarksField" prefHeight="30.0" prefWidth="420.0" />
+    </HBox>
+    <Button fx:id="editButton" onAction="#edit" text="修改" />
+    <Button fx:id="saveButton" onAction="#save" text="保存" />
+    <Button fx:id="cancelButton" onAction="#cancel" text="返回" />
+</VBox>

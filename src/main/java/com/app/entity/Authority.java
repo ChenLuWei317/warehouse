@@ -4,48 +4,61 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+
+import javafx.beans.property.SimpleStringProperty;
 import lombok.Data;
 
 /**
  * 
  * @TableName 软工2202_09_05_29权限管理
  */
-@TableName(value ="软工2202_09_05_29权限管理")
+@TableName(value ="软工2202_09_05_29权限表")
 @Data
 public class Authority implements Serializable {
     /**
      * 
      */
     @TableId
-    private String 人员代码;
+    private Integer 权限代码;
 
-    /**
-     * 
-     */
-    private Integer 人员档案管理;
+    private String 权限名称;
 
-    /**
-     * 
-     */
-    private Integer 物料档案管理;
-
-    /**
-     * 
-     */
-    private Integer 进出仓管理;
-
-    /**
-     * 
-     */
-    private Integer 权限管理;
-
-    /**
-     * 
-     */
-    private Integer 统计打印;
+    private String 备注;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+
+    public Authority(Integer 权限代码, String 权限名称) {
+        this.权限代码 = 权限代码;
+        this.权限名称 = 权限名称;
+    }
+
+    public Authority(String 权限名称) {
+        this.权限名称 = 权限名称;
+    }
+
+    public Integer get权限代码() {
+        return 权限代码;
+    }
+
+    public void set权限代码(Integer 权限代码) {
+        this.权限代码 = 权限代码;
+    }
+
+    public String get权限名称() {
+        return 权限名称;
+    }
+
+    public void set权限名称(String 权限名称) {
+        this.权限名称 = 权限名称;
+    }
+    // 添加一个接受 Integer, String, String 的构造函数
+    public Authority(Integer id, String name, String description) {
+        this.权限代码 = id;
+        this.权限名称 = name;
+        this.备注 = description;
+    }
+
 
     @Override
     public boolean equals(Object that) {
@@ -59,24 +72,16 @@ public class Authority implements Serializable {
             return false;
         }
         Authority other = (Authority) that;
-        return (this.get人员代码() == null ? other.get人员代码() == null : this.get人员代码().equals(other.get人员代码()))
-            && (this.get人员档案管理() == null ? other.get人员档案管理() == null : this.get人员档案管理().equals(other.get人员档案管理()))
-            && (this.get物料档案管理() == null ? other.get物料档案管理() == null : this.get物料档案管理().equals(other.get物料档案管理()))
-            && (this.get进出仓管理() == null ? other.get进出仓管理() == null : this.get进出仓管理().equals(other.get进出仓管理()))
-            && (this.get权限管理() == null ? other.get权限管理() == null : this.get权限管理().equals(other.get权限管理()))
-            && (this.get统计打印() == null ? other.get统计打印() == null : this.get统计打印().equals(other.get统计打印()));
+        return (this.get权限代码() == null ? other.get权限代码() == null : this.get权限代码().equals(other.get权限代码()))
+            && (this.get权限名称() == null ? other.get权限名称() == null : this.get权限名称().equals(other.get权限名称()));
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((get人员代码() == null) ? 0 : get人员代码().hashCode());
-        result = prime * result + ((get人员档案管理() == null) ? 0 : get人员档案管理().hashCode());
-        result = prime * result + ((get物料档案管理() == null) ? 0 : get物料档案管理().hashCode());
-        result = prime * result + ((get进出仓管理() == null) ? 0 : get进出仓管理().hashCode());
-        result = prime * result + ((get权限管理() == null) ? 0 : get权限管理().hashCode());
-        result = prime * result + ((get统计打印() == null) ? 0 : get统计打印().hashCode());
+        result = prime * result + ((get权限代码() == null) ? 0 : get权限代码().hashCode());
+        result = prime * result + ((get权限名称() == null) ? 0 : get权限名称().hashCode());
         return result;
     }
 
@@ -86,14 +91,21 @@ public class Authority implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", 人员代码=").append(人员代码);
-        sb.append(", 人员档案管理=").append(人员档案管理);
-        sb.append(", 物料档案管理=").append(物料档案管理);
-        sb.append(", 进出仓管理=").append(进出仓管理);
-        sb.append(", 权限管理=").append(权限管理);
-        sb.append(", 统计打印=").append(统计打印);
+        sb.append(", 权限代码=").append(权限代码);
+        sb.append(", 权限名称=").append(权限名称);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
     }
+
+    public SimpleStringProperty 权限代码Property() {
+        SimpleStringProperty usernamefx=new SimpleStringProperty(权限代码.toString());
+        return usernamefx;
+    }
+    public SimpleStringProperty 权限名称Property() {
+        SimpleStringProperty usernamefx=new SimpleStringProperty(权限名称);
+        return usernamefx;
+    }
+
+
 }

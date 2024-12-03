@@ -6,9 +6,16 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import javafx.beans.property.SimpleStringProperty;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -46,6 +53,9 @@ public class User implements Serializable {
     private String 联系电话;
 
     private String 备注;
+
+    @TableField(exist = false)
+    private List<Authority> authorities; // 权限列表
 
     public User() {
     }

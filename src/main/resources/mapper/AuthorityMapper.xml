@@ -5,16 +5,12 @@
 <mapper namespace="com.app.mapper.AuthorityMapper">
 
     <resultMap id="BaseResultMap" type="com.app.entity.Authority">
-            <id property="人员代码" column="人员代码" jdbcType="VARCHAR"/>
-            <result property="人员档案管理" column="人员档案管理" jdbcType="INTEGER"/>
-            <result property="物料档案管理" column="物料档案管理" jdbcType="INTEGER"/>
-            <result property="进出仓管理" column="进出仓管理" jdbcType="INTEGER"/>
-            <result property="权限管理" column="权限管理" jdbcType="INTEGER"/>
-            <result property="统计打印" column="统计打印" jdbcType="INTEGER"/>
+            <id property="权限代码" column="权限代码" jdbcType="INTEGER"/>
+            <result property="权限名称" column="权限名称" jdbcType="VARCHAR"/>
+            <result property="备注" column="备注" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        人员代码,人员档案管理,物料档案管理,
-        进出仓管理,权限管理,统计打印
+        权限代码,权限名称,备注
     </sql>
 </mapper>

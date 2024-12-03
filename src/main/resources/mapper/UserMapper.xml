@@ -23,4 +23,15 @@
         籍贯,家庭地址,联系电话,
         备注
     </sql>
+
+    <select id="getPermissionList" resultType="java.lang.String">
+        select p.权限名称
+        from 软工2202_09_05_29人员表 u
+                 join 软工2202_09_05_29权限管理 ur on u.人员代码 = ur.人员代码
+                 join 软工2202_09_05_29权限表 p on ur.权限代码 = p.权限代码
+        where u.人员代码 = #{人员代码}
+    </select>
+
+
+
 </mapper>

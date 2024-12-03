@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<BorderPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx/fxml/1" fx:controller="com.app.controller.AddUserController"
+            fx:id="mainVbox" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10; -fx-padding: 20;">
+    <center>
+        <GridPane fx:id="formGrid" alignment="CENTER" hgap="15" vgap="15">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- Title -->
+            <Label text="添加用户" style="-fx-font-size: 24px; -fx-text-fill: #333333;" GridPane.columnSpan="2" GridPane.halignment="CENTER"/>
+
+            <!-- 姓名 -->
+            <Label text="姓名：" style="-fx-font-size: 18px; -fx-text-fill: #555555;" GridPane.rowIndex="1"/>
+            <TextField fx:id="Name" promptText="请输入姓名" prefWidth="250" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+            <!-- 性别 -->
+            <Label text="性别：" style="-fx-font-size: 18px; -fx-text-fill: #555555;" GridPane.rowIndex="2"/>
+            <ComboBox fx:id="Gender" prefWidth="250" GridPane.rowIndex="2" GridPane.columnIndex="1">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="男"/>
+                        <String fx:value="女"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <!-- 出生日期 -->
+            <Label text="出生日期：" style="-fx-font-size: 18px; -fx-text-fill: #555555;" GridPane.rowIndex="3"/>
+            <DatePicker fx:id="BirthDate" promptText="选择出生日期" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <!-- 籍贯 -->
+            <Label text="籍贯：" style="-fx-font-size: 18px; -fx-text-fill: #555555;" GridPane.rowIndex="4"/>
+            <TextField fx:id="Hometown" promptText="请输入籍贯" prefWidth="250" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+
+            <!-- 家庭地址 -->
+            <Label text="家庭地址：" style="-fx-font-size: 18px; -fx-text-fill: #555555;" GridPane.rowIndex="5"/>
+            <TextField fx:id="Address" promptText="请输入家庭地址" prefWidth="250" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+
+            <!-- 联系电话 -->
+            <Label text="联系电话：" style="-fx-font-size: 18px; -fx-text-fill: #555555;" GridPane.rowIndex="6"/>
+            <TextField fx:id="PhoneNumber" promptText="请输入联系电话" prefWidth="250" GridPane.rowIndex="6" GridPane.columnIndex="1" />
+
+            <!-- 身份证号 -->
+            <Label text="身份证号：" style="-fx-font-size: 18px; -fx-text-fill: #555555;" GridPane.rowIndex="7"/>
+            <TextField fx:id="Username" promptText="请输入身份证号" prefWidth="250" GridPane.rowIndex="7" GridPane.columnIndex="1" />
+
+            <!-- 密码 -->
+            <Label text="密码：" style="-fx-font-size: 18px; -fx-text-fill: #555555;" GridPane.rowIndex="8"/>
+            <PasswordField fx:id="Password" promptText="请输入密码" prefWidth="250" GridPane.rowIndex="8" GridPane.columnIndex="1" />
+
+            <!-- 提交按钮 -->
+            <Button text="添加用户" fx:id="AddUserButton" onAction="#AddUserButtonOnClick" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 18px; -fx-padding: 10 20;"
+                    GridPane.rowIndex="9" GridPane.columnSpan="2" GridPane.halignment="CENTER"/>
+        </GridPane>
+    </center>
+</BorderPane>

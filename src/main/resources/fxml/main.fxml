@@ -12,9 +12,10 @@
                     <children>
                         <TreeItem value="用户管理">
                             <children>
+                                <TreeItem value="我的" />
                                 <TreeItem value="添加用户" />
-                                <TreeItem value="修改用户" />
                                 <TreeItem value="人员信息" />
+                                <TreeItem value="权限管理"/>
                             </children>
                         </TreeItem>
                         <TreeItem value="进出仓管理">
