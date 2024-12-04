@@ -9,5 +9,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2024-10-17 19:41:27
 */
 public interface EntryExitService extends IService<EntryExit> {
-
+    boolean saveEntryExit(EntryExit entryExit);
 }

@@ -83,18 +83,6 @@ public class Goods implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", 物料代码=").append(物料代码);
-        sb.append(", 物料名称=").append(物料名称);
-        sb.append(", 规格型号=").append(规格型号);
-        sb.append(", 计量单位=").append(计量单位);
-        sb.append(", 库存数量=").append(库存数量);
-        sb.append(", 备注=").append(备注);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return this.物料名称; // 返回单位字段的值
     }
 }
