@@ -14,7 +14,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class EntryExitServiceImpl extends ServiceImpl<EntryExitMapper, EntryExit>
     implements EntryExitService {
-
+    public boolean saveEntryExit(EntryExit entryExit) {
+        return this.save(entryExit); // 使用 MyBatis-Plus 的 save 方法
+    }
 }
 
 
