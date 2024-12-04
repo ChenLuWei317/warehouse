@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,7 @@ public class MainController {
     //private LoginUser loginUser = LoginUser.getInstance();
     @Autowired
     private LoginUser loginUser; // 使用@Autowired注入LoginUser
+
     private static final Map<String, String> PAGE_PERMISSIONS = new HashMap<String, String>() {{
         put("人员信息", "用户管理");
         put("权限管理", "用户管理");
@@ -82,6 +84,12 @@ public class MainController {
                 break;
             case "添加用户":
                 loadAddUserPage();
+                break;
+            case "物品入库":
+                loadStoragePage();
+                break;
+            case "物品出库":
+                loadOutPage();
                 break;
             default:
                 contentArea.getChildren().clear();
@@ -173,6 +181,38 @@ public class MainController {
             // 将userInfo.fxml的根节点添加到contentArea中
             contentArea.getChildren().clear(); // 清空现有内容
             contentArea.getChildren().add(Authorities); // 添加新页面
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void loadStoragePage() {
+        try {
+            // 使用FXMLLoader加载storage.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/storage.fxml"));
+            loader.setControllerFactory(ApplicationContextProvider.getApplicationContext()::getBean);
+            // 加载根节点
+            AnchorPane storagePane = loader.load(); // 如果根节点是AnchorPane
+            // 获取StorageController
+            StorageController storageController = loader.getController();
+            // 将storage.fxml的根节点添加到contentArea中
+            contentArea.getChildren().clear(); // 清空现有内容
+            contentArea.getChildren().add(storagePane); // 添加新页面
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void loadOutPage() {
+        try {
+            // 使用FXMLLoader加载storage.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/out.fxml"));
+            loader.setControllerFactory(ApplicationContextProvider.getApplicationContext()::getBean);
+            // 加载根节点
+            AnchorPane outPane = loader.load(); // 如果根节点是AnchorPane
+            // 获取StorageController
+            OutController outController = loader.getController();
+            // 将storage.fxml的根节点添加到contentArea中
+            contentArea.getChildren().clear(); // 清空现有内容
+            contentArea.getChildren().add(outPane); // 添加新页面
         } catch (IOException e) {
             e.printStackTrace();
         }
